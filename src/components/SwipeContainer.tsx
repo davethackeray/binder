@@ -67,22 +67,24 @@ export const SwipeContainer: React.FC<SwipeContainerProps> = ({
         animate={controls}
         className="absolute w-full cursor-grab active:cursor-grabbing"
       >
-        <ProfileCard profile={profiles[currentIndex]} />
+        <div className="relative">
+          <ProfileCard profile={profiles[currentIndex]} />
+          <div className="absolute bottom-[calc(100%-3rem)] left-1/2 transform -translate-x-1/2 flex gap-4 z-10">
+            <button
+              onClick={() => handleDragEnd(null, { offset: { x: -101 }, velocity: { x: 0 } } as PanInfo, profiles[currentIndex].id)}
+              className="p-4 bg-destructive rounded-full text-white shadow-lg hover:bg-destructive/90 transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <button
+              onClick={() => handleDragEnd(null, { offset: { x: 101 }, velocity: { x: 0 } } as PanInfo, profiles[currentIndex].id)}
+              className="p-4 bg-success rounded-full text-white shadow-lg hover:bg-success/90 transition-colors"
+            >
+              <Heart className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
       </motion.div>
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4">
-        <button
-          onClick={() => handleDragEnd(null, { offset: { x: -101 }, velocity: { x: 0 } } as PanInfo, profiles[currentIndex].id)}
-          className="p-4 bg-destructive rounded-full text-white shadow-lg hover:bg-destructive/90 transition-colors"
-        >
-          <X className="w-6 h-6" />
-        </button>
-        <button
-          onClick={() => handleDragEnd(null, { offset: { x: 101 }, velocity: { x: 0 } } as PanInfo, profiles[currentIndex].id)}
-          className="p-4 bg-success rounded-full text-white shadow-lg hover:bg-success/90 transition-colors"
-        >
-          <Heart className="w-6 h-6" />
-        </button>
-      </div>
     </div>
   );
 };

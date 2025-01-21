@@ -37,16 +37,18 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
       )}
       style={style}
     >
-      <div className="relative aspect-[3/4]">
-        <img
-          src={profile.image}
-          alt={profile.name}
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white">
-          <h2 className="text-2xl font-bold">{profile.name}</h2>
-          <p className="text-lg opacity-90">{profile.title}</p>
-          <p className="text-sm opacity-80">{profile.company}</p>
+      <div className="relative">
+        <div className="aspect-[3/4]">
+          <img
+            src={profile.image}
+            alt={profile.name}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white">
+            <h2 className="text-2xl font-bold">{profile.name}</h2>
+            <p className="text-lg opacity-90">{profile.title}</p>
+            <p className="text-sm opacity-80">{profile.company}</p>
+          </div>
         </div>
       </div>
       <div className="p-6">
